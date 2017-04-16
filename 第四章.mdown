@@ -1,0 +1,186 @@
+## 第四章：An HTML and CSS Primer
+本章讲解了关于HTML和CSS的基础知识，第五章和第六章讲解了JS和TS的相关知识，有经验的开发者请直接前往第七章。
+
+### 准备示例程序
+>1.在HtmlCssPrimer文件夹创建package.json文件
+```
+{
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.4"
+  },
+  "devDependencies": {
+    "lite-server": "2.2.2"
+  },
+  "scripts": {
+    "start": "npm run lite",
+    "lite": "lite-server"
+  }
+}
+```
+2.安装依赖包	
+```
+npm install
+```
+3.在HtmlCssPrimer文件夹创建index.html文件
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo</title>
+    <meta charset="utf-8" />
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
+</head>
+<body class="m-a-1">
+    <h3 class="bg-primary p-a-1">Adam's To Do List</h3>
+    <div class="m-t-1 m-b-1">
+        <input class="form-control" />
+        <button class="btn btn-primary m-t-1">Add</button>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Done</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Buy Flowers</td><td>No</td></tr>
+            <tr><td>Get Shoes</td><td>No</td></tr>
+            <tr><td>Collect Tickets</td><td>Yes</td></tr>
+            <tr><td>Call Joe</td><td>No</td></tr>
+        </tbody>
+    </table>
+</body>
+</html>
+```
+4.开启http服务器，运行应用
+```
+npm start
+```
+
+### 理解HTML
+HTML的核心是元素。包含开始标签、内容、结束标签。
+
+#### 理解空元素
+单标签，例如<input /\>。
+
+#### 理解属性（Attributes）
+
+* 属性名+属性值。
+* 还有无值属性，比如input的required。
+* 在属性中引用字面值，Angular特有，不要使用两对双引号。
+```
+<td [ngSwitch]="'Apples'">
+```
+
+#### 理解元素内容
+内容既可以是文本也可以是元素。层层嵌套的元素构成了DOM树。
+
+#### 理解文档结构
+1.DOM结构的基本元素：DOCTYPE、html、head、body。每个基本元素对应一种特殊的规则。
+2.理解DOM树是web开发的基础。
+
+### 理解Bootstrap
+HTML负责结构，CSS负责样式。CSS包括属性和选择器。Bootstrap是一个受欢迎的CSS框架。<a href="http://getbootstrap.com ">详细</a>
+
+#### 应用基本的Bootstarp类
+例子的btn, btn-primary, 和 m-t-1类。详情见文档。
+```
+<button class="btn btn-primary m-t-1">Add</button>
+```
+
+#### 使用上下文有关的类
+Bootstrap定义了一种上下文有关的风格去创建一致性的主题。例如bg-primary或者btn-primary
+>1.primary
+2.success
+3.info
+4.warning
+5.danger
+6.muted
+
+
+#### 使用外边距和内边距
+控制元素间和元素内的空间。例如m-a-1
+>1.m或者p开头
+2.中间是a或者l、r、t、b
+3.最后是0-3+
+
+#### 改变元素尺寸
+比如lg或者sm。
+
+#### Bootstrap关于表格的类
+>1.table
+2.table-striped 表格行分隔线
+3.table-inverse 表格逆转色
+4.table-bordered 边框
+5.table-hover 表格悬停样式
+6.table-sm 减少表格内间距
+
+#### Bootstrap创建表单
+
+```
+<div class="form-group">
+    <label>Task</label>
+    <input class="form-control" />
+</div>
+```
+#### Bootstrap创建栅格
+Bootstrap提供了一个有12列的栅格系统支持响应式布局。row内的元素没有样式。
+
+```
+<div class="row">
+    <div class="col-xs-6">6</div>
+    <div class="col-xs-6">6</div>
+</div>
+```
+
+##### 创建响应式栅格
+>1.col-sm-* 768
+2.col-md-* 940
+3.col-lg-* 1170
+4.当屏幕很小时，栅格会变成垂直的
+
+##### 创建一个简化的栅格布局
+```
+<body class="m-a-1">
+    <h3 class="bg-primary p-a-1">Adam's To Do List</h3>
+    <div class="col-xs-4">
+        <form>
+            <div class="form-group">
+                <label>Task</label>
+                <input class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" />
+                <label>Done</label>
+            </div>
+            <button class="btn btn-primary">Add</button>
+        </form>
+    </div>
+    <div class="col-xs-8">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Buy Flowers</td><td>No</td></tr>
+                <tr><td>Get Shoes</td><td>No</td></tr>
+                <tr><td>Collect Tickets</td><td>Yes</td></tr>
+                <tr><td>Call Joe</td><td>No</td></tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+```
+
+### 总结
+这章简略地介绍了HTML和CSS以及Bootstrap的知识，可以让你亲身体验一下。一个优秀的前端工程师是需要良好的HTML和CSS基础的。下一章我将会介绍基础的JS知识。
+  
